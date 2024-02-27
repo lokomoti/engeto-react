@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home/Home";
+import Home from "./pages/Home";
 import { Box, Stack } from "@mui/material";
 import MenuBar from "./components/Menu";
-import PokemonFetcher from "./pages/PokemonApi/components/PokemonFetcher";
+import PokemonApi from "./pages/PokemonApi";
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/pokemonapi" element={<PokemonFetcher />} />
+            <Route path="/pokemonapi" element={<PokemonApi />} />
           </Routes>
         </BrowserRouter>
       </Stack>

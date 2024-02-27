@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { fetchPokemon } from "../../../services/pokemonService";
-import PokemonType from "../../../types/PokemonType";
+import { fetchPokemon } from "../../services/pokemonService";
+import PokemonType from "../../types/PokemonType";
 import { Paper, Skeleton, Stack, Typography } from "@mui/material";
 
 // Zde pooužil toto: https://mui.com/material-ui/react-skeleton/ plus další.
@@ -23,10 +23,11 @@ const Pokemon: React.FC<PokemonProps> = ({ pokemonName }) => {
     fetchPokemon(pokemonName)
       .then((fetchedPokemon) => {
         setPokemon(fetchedPokemon);
-        setLoading(false);
       })
       .catch((error) => {
         setError(error.message);
+      })
+      .finally(() => {
         setLoading(false);
       });
   }, [pokemonName]);
@@ -34,10 +35,7 @@ const Pokemon: React.FC<PokemonProps> = ({ pokemonName }) => {
   if (loading) {
     return (
       <Stack spacing={1}>
-        {/* For variant="text", adjust the height via font-size */}
         <Skeleton variant="text" sx={{ fontSize: "1rem" }} />
-
-        {/* For other variants, adjust the size with `width` and `height` */}
         <Skeleton variant="circular" width={40} height={40} />
         <Skeleton variant="rectangular" width={210} height={60} />
         <Skeleton variant="rounded" width={210} height={60} />

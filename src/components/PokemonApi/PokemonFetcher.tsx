@@ -9,11 +9,9 @@ const PokemonFetcher = () => {
 
   useEffect(() => {
     setButtonEnable(textInput.length > 0 ? true : false);
-  });
+  }, [textInput]);
 
-  const handleTextChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTextInput(e.target.value.toLowerCase());
   };
 
@@ -33,7 +31,7 @@ const PokemonFetcher = () => {
             defaultValue=""
             helperText="Enter Pokémon Name to Fetch"
             onChange={(e) => {
-              handleTextChange(e);
+              handleTextChange(e as React.ChangeEvent<HTMLInputElement>);
             }}
           />
           <Button

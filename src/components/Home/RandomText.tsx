@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import randomTexts from "../../../assets/randomText";
-import { getRandomElement } from "../../../utils/random";
+import { getRandomElement } from "../../utils/random";
+import data from "../../helpers/data.json";
+
+const randomTexts = data["randomTexts"];
 
 const RandomText = () => {
   const [text, setText] = useState("");

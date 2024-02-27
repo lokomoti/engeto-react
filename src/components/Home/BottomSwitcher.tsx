@@ -6,11 +6,13 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import pokemons from "../../../assets/data";
 import { useState } from "react";
+import data from "../../helpers/data.json";
+
+const pokemons = data["pokemons"];
 
 const BottomSwitcher = () => {
-  const [selectedPokemon, setSelectedPokemon] = useState<string[]>(["0"]);
+  const [selectedPokemon, setSelectedPokemon] = useState(["0"]);
 
   const handlePokemonChange = (
     _event: React.MouseEvent<HTMLElement>,
@@ -18,7 +20,6 @@ const BottomSwitcher = () => {
   ) => {
     setSelectedPokemon(updatedPokemon);
   };
-  console.log(pokemons);
 
   return (
     <Box width={"600px"} height={"300px"}>
@@ -29,7 +30,9 @@ const BottomSwitcher = () => {
           exclusive
         >
           {pokemons.map((pokemon, index) => (
-            <ToggleButton value={index.toString()}>{pokemon.name}</ToggleButton>
+            <ToggleButton value={index.toString()} key={index}>
+              {pokemon.name}
+            </ToggleButton>
           ))}
         </ToggleButtonGroup>
       </Stack>

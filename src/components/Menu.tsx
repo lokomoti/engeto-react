@@ -31,14 +31,14 @@ export default function MenuBar() {
     setOpen(false);
   };
 
-  function handleListKeyDown(event: React.KeyboardEvent) {
+  const handleListKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Tab") {
       event.preventDefault();
       setOpen(false);
     } else if (event.key === "Escape") {
       setOpen(false);
     }
-  }
+  };
 
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open);
